@@ -82,7 +82,7 @@ public class PatientService {
         return patients;
     }
     public void updatePatient(Patient patient) throws SQLException {
-        String sql = "UPDATE patients SET firstName=?, lastName=?, gender=?, dob=?, phone=?, email=?, address=?, bloodGroup=? WHERE patientId=?";
+        String sql = "UPDATE patients SET first_name=?, last_name=?, gender=?, dob=?, phone=?, email=?, address=?, blood_group=? WHERE patient_id=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, patient.getFirstName());
             stmt.setString(2, patient.getLastName());

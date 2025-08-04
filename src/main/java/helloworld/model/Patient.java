@@ -9,8 +9,8 @@ public class Patient {
     private String lastName;
     private String gender;
     private Date DOB;
-    private String email;
     private String phone;
+    private String email;
     private String address;
     private String bloodGroup;
     private LocalDate registeredDate;
@@ -18,7 +18,7 @@ public class Patient {
     public Patient(){}
 
     public Patient(int patientID, String firstName, String lastName, String gender,
-                   Date DOB, String email, String phone, String bloodGroup, String address,LocalDate registeredDate){
+                   Date DOB, String phone, String email, String address, String bloodGroup,LocalDate registeredDate){
         this.patientID = patientID;
         this.firstName = firstName;
         this .lastName = lastName;
