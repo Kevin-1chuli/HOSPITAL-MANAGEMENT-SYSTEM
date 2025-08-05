@@ -98,5 +98,16 @@ public class DoctorService {
             stmt.executeUpdate();
         }
     }
+    public int getDoctorsCount()throws SQLException{
+        int count = 0;
+        String sql ="SELECT COUNT(doctor_id) FROM doctors";
+        try(PreparedStatement stmt = conn.prepareStatement(sql);){
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+        }
+        return count;
+    }
 
 }

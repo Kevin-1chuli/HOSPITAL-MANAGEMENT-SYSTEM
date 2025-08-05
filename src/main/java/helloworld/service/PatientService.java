@@ -97,10 +97,22 @@ public class PatientService {
         }
     }
     public void deletePatient(int patientId) throws SQLException {
-        String sql = "DELETE FROM patients WHERE patientId = ?";
+        String sql = "DELETE FROM patients WHERE patient_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, patientId);
             stmt.executeUpdate();
         }
+    }
+    public int getPatientCount()throws SQLException{
+        int count = 0;
+        String query = "SELECT COUNT(patient_id) FROM patients";
+        try( PreparedStatement stmt = conn.prepareStatement(query);){ 
+           
+            ResultSet rs = stmt.executeQuery(query);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+        }
+        return count;
     }
 }
