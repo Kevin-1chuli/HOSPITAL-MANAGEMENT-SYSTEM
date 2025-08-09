@@ -88,5 +88,21 @@ public class BillService {
             System.out.println("❌ Failed to update bill status: " + e.getMessage());
         }
     }
+    public String getUnpaidBillSummary()throws SQLException{
+        String sql = "SELECT COUNT(*) AS total_unpaid, SUM(amount) AS total_amount FROM bills WHERE status = 'unpaid'";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        int totalUnpaid = 0;
+        double totalAmount = 0.0;
+
+        if (rs.next()) {
+            totalUnpaid = rs.getInt("total_unpaid");
+            totalAmount = rs.getDouble("total_amount");
+        }
+
+        return "Unpaid Bills: " + totalUnpaid + " (Total: UGX " + (int) totalAmount + ")";
+    
+    }
 }
 
